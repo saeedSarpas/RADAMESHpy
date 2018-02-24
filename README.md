@@ -26,3 +26,9 @@ $ pip3 install . # --user in case you want to install it locally
     >>> from radamesh_py import RadameshPy
     >>> rp = RadameshPy()
 ```
+
+
+## Running tests
+
+Run either ```python3 ./setup.py test``` or ```py.test``` in the root directory
+of the package.

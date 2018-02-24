@@ -16,7 +16,8 @@ setup(name='radamesh_py',
       packages=['radamesh_py'],
       install_requires=[
           'h5py',
+          'numpy'
       ],
-      test_suite='nose.collector',
-      tests_require=['nose'],
+      setup_requires=['pytest-runner'],
+      tests_require=['pytest'],
       zip_safe=False)
