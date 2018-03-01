@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# to run this file go to the root directory of this package and run:
+# $ python setup.py chombo
 
 # +-------+-------+-------+-------+
 # |   |   |       |       |       |
@@ -25,10 +27,9 @@
 import h5py
 import numpy as np
 
-FILENAME = 'test.chombo.h5'
+FILENAME = 'radamesh_py/tests/assets/chombo.h5'
 
-if __name__ == '__main__':
-
+def create():
     chombo = h5py.File(FILENAME, 'w')
 
     # Chombo format attributes
@@ -60,8 +61,6 @@ if __name__ == '__main__':
     lev_0.attrs['prob_domain'] = np.array([(0, 0, 3, 3)], dtype=boxtype)
     lev_0.attrs['ref_ratio'] = 2
 
-    lev_0['GridId'] = np.array([1], dtype=np.int)
-
     boxes_0 = lev_0.create_dataset('boxes', (1,), dtype=boxtype)
 
     boxes_0[0] = (0, 0, 3, 3)
@@ -74,15 +73,13 @@ if __name__ == '__main__':
     lev_1.attrs['dx'] = 0.125
     lev_1.attrs['ref_ratio'] = 2
 
-    lev_1['GridId'] = np.arange(2, 18)
-
     boxes_1 = lev_1.create_dataset('boxes', (3,), dtype=boxtype)
 
     boxes_1[0] = (0, 6, 1, 7)
     boxes_1[1] = (4, 4, 5, 5)
     boxes_1[2] = (2, 2, 5, 3)
 
-    lev_1['data:datatype=0'] = np.arange(32, 64)
+    lev_1['data:datatype=0'] =  np.arange(2 * 16)
 
     # level 2
     lev_2 = chombo.create_group('level_2')
@@ -90,13 +87,11 @@ if __name__ == '__main__':
     lev_2.attrs['dx'] = 0.0625
     lev_2.attrs['ref_ratio'] = 2
 
-    lev_2['GridId'] = np.arange(18, 30)
-
     boxes_2 = lev_2.create_dataset('boxes', (2,), dtype=boxtype)
 
     boxes_2[0] = (8, 8, 9, 9)
     boxes_2[1] = (6, 6, 9, 7)
 
-    lev_2['data:datatype=0'] = np.arange(64, 76)
+    lev_2['data:datatype=0'] = np.arange(2 * 12)
 
     chombo.close()

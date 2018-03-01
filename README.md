@@ -30,5 +30,18 @@ $ pip3 install . # --user in case you want to install it locally
 
 ## Running tests
 
-Run either ```python3 ./setup.py test``` or ```py.test``` in the root directory
-of the package.
+To make sure that the CHOMBO test file is updated, run
+```bash
+$ python3 setup.py chombo
+```
+This command will create a CHOMBO test file inside ```radamesh_py/tests/assets```.
+
+To run the tests, execute the following command:
+```bash
+$ python3 ./setup.py test
+```
+or
+```bash
+$ py.test
+```
+from the root directory of the package.

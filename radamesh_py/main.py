@@ -17,11 +17,13 @@ class RadameshPy:
         '''
         self.path = path
         self.attrs = _load_attrs(path)
+        self.levels = {}
 
+        for l in range(self.attrs['num_levels']):
+            self.levels["level_%d" % l] = {}
 
     def load(self):
         '''Loading different fields of the chombo file'''
-
 
 
 def _load_attrs(path):
