@@ -42,6 +42,6 @@ $ python3 ./setup.py test
 ```
 or
 ```bash
-$ py.test
+$ py.test # -s to show stdout
 ```
 from the root directory of the package.
